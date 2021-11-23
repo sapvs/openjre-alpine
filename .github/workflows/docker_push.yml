@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        alpine_ver: [3.14, latest]
+        jre_ver: [8, 11]
+    steps:
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          build-args: ALPINE_VERSION=${{ matrix.alpine_ver }}, JRE_VERSION=${{ matrix.jre_ver }}
+          push: false
+          tags: sudosapan/openjre-alpine:${{ matrix.jre_ver }}-${{ matrix.alpine_ver }}

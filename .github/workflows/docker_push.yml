@@ -28,4 +28,4 @@ jobs:
             ALPINE_VERSION=${{ matrix.alpine_ver }}
             JRE_VERSION=${{ matrix.jre_ver }}
           push: false
-          tags: sapvs/openjre-alpine:${{ matrix.jre_ver }}-${{ matrix.alpine_ver }}
+          tags: sudosapan/openjre-alpine:${{ matrix.jre_ver }}-${{ matrix.alpine_ver }}

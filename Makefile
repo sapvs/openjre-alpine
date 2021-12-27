@@ -7,7 +7,7 @@ images:
 			docker build \
 			--build-arg ALPINE_VERSION=$$alpi \
 			--build-arg JRE_VERSION=$$jre \
-			-t sudosapan/openjre-alpine:$$jre-$$alpi .;\
+			-t sapvs/openjre-alpine:$$jre-$$alpi .;\
 		done;\
 	done
 

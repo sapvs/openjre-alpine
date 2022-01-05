@@ -1,6 +1,6 @@
 # For local builds these versions are supplied here, else github actions takes care of this.
-ALPINE_VERSIONS=latest 3.14
-JRE_VERSIONS=8 11
+ALPINE_VERSIONS=latest
+JRE_VERSIONS=8 11 12 13 14 15 16 17
 
 images:
 	@for alpi in ${ALPINE_VERSIONS}; do\

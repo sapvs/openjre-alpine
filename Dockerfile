@@ -8,7 +8,7 @@ LABEL maintainer="Sapan Vashishth sudosapan@gmail.com"
 LABEL repo="https://github.com/sapvs/openjre-alpine.git"
 
 # Add openjdk-jre and bash
-RUN apk add --no-cache --update openjdk${JRE_VERSION}-jre
+RUN apk add --no-cache --update openjdk${JRE_VERSION}-jre-headless
 
 # Add user java for this image
 RUN addgroup -S java && adduser -S java -G java -h /java

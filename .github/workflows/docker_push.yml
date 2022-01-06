@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         alpine_ver: [latest]
-        jre_ver: [8, 11, 17]
+        jre_ver: [11, 17]
     steps:
       -
         name: Login to DockerHub

@@ -1,6 +1,7 @@
 # For local builds these versions are supplied here, else github actions takes care of this.
-ALPINE_VERSIONS=latest
-JRE_VERSIONS=8 11 12 13 14 15 16 17
+ALPINE_VERSIONS=latest 3.15 3.14
+# for 8 minimal jre is 8-jre-base and is headless for 11 onwards
+JRE_VERSIONS=8-jre-base 11-jre-headless 17-jre-headless
 
 images:
 	@for alpi in ${ALPINE_VERSIONS}; do\

@@ -4,14 +4,13 @@ FROM alpine:${ALPINE_VERSION}
 ARG ALPINE_VERSION
 ARG JRE_VERSION
 
-LABEL maintainer="Sapan Vashishth sudosapan@gmail.com"
-LABEL repo="https://github.com/sapvs/openjre-alpine.git"
+LABEL maintainer="Sapan Vashishth sudosapan@gmail.com" \
+  repo="https://github.com/sapvs/openjre-alpine.git"
 
-# Add openjdk-jre and bash
-RUN apk add --no-cache --update openjdk${JRE_VERSION}-jre-headless
+# Add openjdk-jre
+RUN apk add --no-cache --update openjdk${JRE_VERSION}
 
 # Add user java for this image
 RUN addgroup -S java && adduser -S java -G java -h /java
-USER java
 
 CMD [ "java",  "-version" ]

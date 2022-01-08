@@ -19,6 +19,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - id: get-id
+        run: |
+        id=$(echo ${{ matrix.jre_ver }} | cut -d- -f1)
+        echo "::set-output name=id::$id"
+      - run: echo "${{steps.get-id.outputs.id}}"
       -
         name: Build and push
         id: docker_build
@@ -28,7 +33,7 @@ jobs:
             ALPINE_VERSION=${{ matrix.alpine_ver }}
             JRE_VERSION=${{ matrix.jre_ver }}
           push: true
-          tags: sapvs/openjre-alpine:${{ matrix.jre_ver }}-${{ matrix.alpine_ver }}
+          tags: sapvs/openjre-alpine:${{ steps.get-id.outputs.id }}-${{ matrix.alpine_ver }}
   docker2:
     runs-on: ubuntu-latest
     strategy:
@@ -42,6 +47,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - id: get-id
+        run: |
+        id=$(echo ${{ matrix.jre_ver }} | cut -d- -f1)
+        echo "::set-output name=id::$id"
+      - run: echo "${{ steps.get-id.outputs.id }}"
       -
         name: Build and push
         id: docker_build
@@ -51,4 +61,4 @@ jobs:
             ALPINE_VERSION=${{ matrix.alpine_ver }}
             JRE_VERSION=${{ matrix.jre_ver }}
           push: true
-          tags: sapvs/openjre-alpine:${{ matrix.jre_ver }}-${{ matrix.alpine_ver }}
+          tags: sapvs/openjre-alpine:${{ steps.get-id.outputs.id }}-${{ matrix.alpine_ver }}

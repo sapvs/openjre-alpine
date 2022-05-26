@@ -4,6 +4,7 @@ FROM alpine:${ALPINE_VERSION}
 ARG ALPINE_VERSION
 ARG JRE_VERSION
 
+# Labels
 LABEL maintainer="Sapan Vashishth sudosapan@gmail.com" \
   repo="https://github.com/sapvs/openjre-alpine.git"
 
